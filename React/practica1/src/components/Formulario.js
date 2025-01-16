@@ -1,6 +1,7 @@
 import React from 'react';
 function Formulario(props) {
-    const Submit = () => {
+    const Submit = (e) => {
+      e.preventDefault();
         alert("¡Hola "+props.nombre+"! "+props.mensaje);
     }
   return (

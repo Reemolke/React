@@ -17,7 +17,7 @@ function Cronometro() {
                         };
                     }
                     return {
-                        ...prevTiempo,  // Mantener los valores previos
+                        minutos: prevTiempo.minutos,  // Mantener los valores previos
                         contador: prevTiempo.contador + 1,  // Incrementar el contador
                     };
                 });
