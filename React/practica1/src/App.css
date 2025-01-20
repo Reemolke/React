@@ -59,7 +59,7 @@ img:hover{
   height: 300px;  
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.Galeria{
+.galeria{
   display: flex;
   flex-wrap: wrap;            /* Permite que los elementos se envuelvan */
    /* Espacios uniformes entre las imágenes */

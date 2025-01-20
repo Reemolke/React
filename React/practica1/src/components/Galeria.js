@@ -3,8 +3,8 @@ import React from 'react';
 function Galeria(props) {
   return (
     <div className="galeria">
-      {props.urls.map((url, index) => (
-        <img key={index} src={url} className="meme-image"/>
+      {Object.entries(props.urls).map(([index, url]) => (
+        <img key={index} src={url} alt={index}  className="meme-image"/>
       ))}
     </div>
   );

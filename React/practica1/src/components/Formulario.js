@@ -1,11 +1,31 @@
-import React from 'react';
-function Formulario(props) {
+import React, { useState } from 'react';
+function Formulario() {
+    const [nombre, setNombre] = useState("Riquelmer");
+    const [mensaje,setMensaje] = useState("Mensaje");
     const Submit = (e) => {
       e.preventDefault();
-        alert("¡Hola "+props.nombre+"! "+props.mensaje);
+        alert("¡Hola "+nombre+"! "+mensaje);
     }
   return (
-    <form>
+     <form>
+        <label>
+          Nombre
+          <input 
+            type="text" 
+            value={nombre} 
+            onChange={(e) => setNombre(e.target.value)} 
+            style={{ marginLeft: '10px', padding: '5px' }}
+          />
+        </label>
+        <label>
+          Mensaje
+          <input 
+            type="text" 
+            value={mensaje} 
+            onChange={(e) => setMensaje(e.target.value)} 
+            style={{ marginLeft: '10px', padding: '5px' }}
+          />
+        </label>
         <button onClick={Submit}>Enviar</button>
     </form>
   );
