@@ -92,3 +92,6 @@ img:hover{
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   background-color: aquamarine;
 }
+.botonSaludo:hover{
+  background-color: aliceblue;
+}
