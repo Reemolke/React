@@ -10,11 +10,6 @@ function FormularioTarea({ agregarTarea }) {
     setTarea(e.target.value);
   };
 
-  // Handler for radio button change (if you want to track completion)
-  const handleRadioChange = (e) => {
-    setCompletada(e.target.checked);
-  };
-
   // Form submission handler
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,14 +27,6 @@ function FormularioTarea({ agregarTarea }) {
         onChange={handleInputChange}
         placeholder="Tarea"
       />
-      <label>
-        <input
-          type="checkbox"
-          checked={completada}
-          onChange={handleRadioChange}
-        />
-        Completada
-      </label>
       <button type="submit">Agregar</button>
     </form>
   );

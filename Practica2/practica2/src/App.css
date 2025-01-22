@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  border: 1px solid black;
   height: 100%;
   width: 100%;
   display:flex;
@@ -10,7 +9,10 @@
   display: flex;
   flex-direction: row;
   height: 100%;  /* Esto asegura que el contenedor ocupe toda la altura */
-  width: 100%;   /* Asegura que ocupe toda la anchura */
+  width: 90%;   /* Asegura que ocupe toda la anchura */
+  padding:5%;
+  background-color: rgb(11, 88, 30);
+  color:  rgb(77, 158, 98);
 }
 
 li{
@@ -28,10 +30,12 @@ li{
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  border-radius: 2%;
+  background-color: rgb(77, 158, 98);
+  
 }
 .listaTexto{
   height: 100%;
-  border: 1px solid black;
 }
 html,body,#root{
   height: 100%;
@@ -39,4 +43,16 @@ html,body,#root{
 form{
 
   padding: 20px;
+}
+input{
+  border-radius: 5px;
+  height: 20px;
+}
+li{
+  margin-right: 3%;
+  color:rgb(11, 88, 30);
+  border: 4px rgb(11, 88, 30);;
+  border-radius: 10px;
+  margin-bottom: 1%;
+  border-style: outset;
 }
