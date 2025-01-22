@@ -1,13 +1,12 @@
 import React from 'react';
-
-function ListaTareas(props) {
+import Tarea from './tarea';
+function ListaTareas({tareas,eliminarTarea,completarTarea}) {
   return (
-    <div>
+    <div class="lista">
       <ul>
-        {props.tareas.map((tarea, index) => (
-          <li key={index}>
-            <span>{tarea.tarea}</span> {/* Display task name */}
-            {tarea.completada && <span> (Completada)</span>} {/* Show "Completada" if the task is completed */}
+        {tareas.map((tarea, index) => (
+          <li>
+            <Tarea tarea={tarea.tarea} completada={tarea.completada} index={index} eliminarTarea={eliminarTarea} completarTarea={completarTarea}/>
           </li>
         ))}
       </ul>

@@ -1,45 +1,42 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.container{
-  display: flex;
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+  display:flex;
   flex-direction: column;
 }
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;  /* Esto asegura que el contenedor ocupe toda la altura */
+  width: 100%;   /* Asegura que ocupe toda la anchura */
+}
+
 li{
   list-style: none;
+}
+.checked{
+  text-align: center;
+  vertical-align:middle;
+  width:16px;
+  height: 16px;
+}
+.lista {
+  height: 100%;  /* Ocupa el 100% de la altura disponible */
+  width: 70%;    /* Por ejemplo, el 70% del ancho total para la lista de tareas */
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+}
+.listaTexto{
+  height: 100%;
+  border: 1px solid black;
+}
+html,body,#root{
+  height: 100%;
+}
+form{
+
+  padding: 20px;
 }
