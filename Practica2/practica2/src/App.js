@@ -26,6 +26,11 @@ function App() {
       <div class="container">
         <ListaTareas tareas={tareas} eliminarTarea={eliminarTarea} completarTarea={completarTarea}/>
         <FormularioTarea agregarTarea={agregarTarea}/>
+        
+        <audio id='reproductor' autoPlay>
+        <source src="//audio//bossanova.mp3" type='audio/mpeg'></source>
+        
+        </audio>
       </div>
     </div>
   );
