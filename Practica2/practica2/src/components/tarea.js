@@ -1,5 +1,5 @@
 import React from "react";
-function Tarea({tarea,completada,index,eliminarTarea,completarTarea}){
+function Tarea({tarea,completada,index,eliminarTarea,completarTarea}){//De esta manera me deja poner varios props y pasar funciones a la vez
     return (
         <div class="listaTexto">
             <div class="texto"><span>{completada && <em style={{textDecoration : 'line-through'}}>{tarea}</em>}{!completada && tarea}</span><span>{completada && (<img class="checked" src="https://static.vecteezy.com/system/resources/previews/010/152/436/original/tick-check-mark-icon-sign-symbol-design-free-png.png" alt="check"></img>)}
@@ -12,5 +12,5 @@ function Tarea({tarea,completada,index,eliminarTarea,completarTarea}){
             
         </div>
     );
-}
+}//En el div texto, se pone un <span> con texto dependiendo de el valor de completada y diferente imagen
 export default Tarea;

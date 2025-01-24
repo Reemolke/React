@@ -1,38 +1,39 @@
 import React, { useState, useRef, useEffect } from "react";
 
 function FormularioTarea({ agregarTarea }) {
-  // State to store the input value
+  //Utilizar useState para establecer variables
   const [tarea, setTarea] = useState("");
   const [completada, setCompletada] = useState(false);
+  //useRef para guardar espacio para una referencia a un <audio>
   const audioRef = useRef(null);
 
-  // State to control whether the audio should be played
+  
   const [audioPlayed, setAudioPlayed] = useState(false);
 
-  // Handler for the input change
+  //Si <input> cambia, uso setTarea() con el valor del input
   const handleInputChange = (e) => {
     setTarea(e.target.value);
   };
 
 
-  // Form submission handler
+  //Si se hace submit, compruebo que la variable tarea no este vacia, si no lo esta, llamo a agregarTarea()
   const handleSubmit = (e) => {
     e.preventDefault();
     if (tarea.trim()) {
       agregarTarea(tarea, completada);
-      setTarea(""); // Reset input field after submit
-      setAudioPlayed(true); // Set state to play audio after submitting the form
+      setTarea(""); //Limpio la tarea
+      setAudioPlayed(true); //Al interactuar con el form establezco audioPlayed a true
     }
   };
 
-  // Play audio when the form is submitted
-  useEffect(() => {
+ 
+  useEffect(() => { //Al cambiar el estado de audioPlayed, se efectua esto
     if (audioPlayed && audioRef.current) {
-      audioRef.current.volume = 0.10;
-      audioRef.current.play(); // Play audio after user interaction
+      audioRef.current.volume = 0.10;//Utilizo la referencia al audio para cambiar el volumen y reproducirlo
+      audioRef.current.play(); 
     }
-  }, [audioPlayed]); // Only run the effect when audioPlayed changes
-
+  }, [audioPlayed]); 
+  
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -43,7 +44,7 @@ function FormularioTarea({ agregarTarea }) {
       />
       <button type="submit">Agregar</button>
 
-      <audio ref={audioRef} src="./bossanova.mp3" loop controls>
+      <audio ref={audioRef} src="./bossanova.mp3" loop controls> 
       </audio>
     </form>
   );
