@@ -65,6 +65,10 @@ form{
   
   justify-content:flex-start;
 }
+audio{
+  margin-top: 5%;
+  
+}
 form button{
   height: 70px;
   width: 300px;

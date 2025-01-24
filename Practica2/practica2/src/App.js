@@ -1,9 +1,9 @@
 
 import './App.css';
 import ListaTareas from './components/listaTareas';
-import { useState } from'react';
+import { useState} from'react';
 import FormularioTarea from './components/FormularioTarea';
-
+import React from 'react';
 
 function App() {
   const [tareas, setTareas]= useState([]);
@@ -20,17 +20,13 @@ function App() {
     nuevasTareas[index] = {...nuevasTareas[index],completada: !completada}
     setTareas(nuevasTareas);
   };
+  
   return (
     <div className="App">
       <h1>Lista de Tareas</h1>
       <div class="container">
         <ListaTareas tareas={tareas} eliminarTarea={eliminarTarea} completarTarea={completarTarea}/>
         <FormularioTarea agregarTarea={agregarTarea}/>
-        
-        <audio id='reproductor' autoPlay>
-        <source src="//audio//bossanova.mp3" type='audio/mpeg'></source>
-        
-        </audio>
       </div>
     </div>
   );
