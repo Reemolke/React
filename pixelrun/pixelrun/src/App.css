@@ -24,18 +24,20 @@ root{
 .stick{
   height: 11vh;  /* Altura relativa al 10% de la altura de la pantalla */
   width: 6vw;   /* Ancho relativo al 15% del ancho de la pantalla */
-  margin-top: 64.5vh;  /* Margen superior relativo a la altura de la pantalla */
-  margin-left: 23vw; /* Margen izquierdo relativo al ancho de la pantalla */
-  background-color: white;
+  margin-top: 64.2vh;  /* Margen superior relativo a la altura de la pantalla */
+  margin-right: 69.7vw; /* Margen izquierdo relativo al ancho de la pantalla */
   border-radius: 50%;
 }
 @media (max-width: 768px) {  /* Para pantallas más pequeñas como móviles */
   .stick {
     height: 10vh;
     width: 10vh;
-    background-color: red;
     margin-top: 58vh;
     margin-left: 18.25vw;
+    border-radius: 50%;
+  }
+  .bola{
+    background-color: red;
   }
 }
 .App-logo {
