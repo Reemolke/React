@@ -50,14 +50,33 @@ root{
   display: flex;
 }
 .visualizacion{
-  background-color: red;
+  background-color: beige;
+  color: black;
   width: 35%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.visualizacion img{
+  width: 100%;
+  height: 100%;
+  justify-self: center;
+}
+.visualizacion div{
+  width: 80%;
+  height: 60%;
+  justify-self: center;
+  background-image: url('https://th.bing.com/th/id/OIP.iG7G9JdHt3lGTI3j23hQjwHaDn?rs=1&pid=ImgDetMain');
+  background-repeat:no-repeat ;
+  background-size: cover;
 }
 .resumen{
   background-color: yellow;
   width: 35%;
   height: 100%;
+  
 }
 .lista{
   background-color: aqua;
