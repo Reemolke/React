@@ -130,7 +130,7 @@ const Stick = () => {
           top: `${position.y}%`,
           transform: 'translate(-50%, -50%)',
           borderRadius: '50%',
-          backgroundColor: 'red', // Color de la bola
+          backgroundColor: 'grey', // Color de la bola
           cursor: 'pointer',
         }}
       />

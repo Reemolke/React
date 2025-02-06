@@ -14,6 +14,7 @@ root{
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   margin: auto;
   justify-content: space-between;
   background-image: url('./arcade.png');
@@ -21,21 +22,31 @@ root{
   background-repeat: no-repeat;
   background-position: center;
 }
-
+.botones{
+  height: 25%;
+}
 .stick{
   height: 11vh;  /* Altura relativa al 10% de la altura de la pantalla */
   width: 6vw;   /* Ancho relativo al 15% del ancho de la pantalla */
-  margin-top: 64.5vh;  /* Margen superior relativo a la altura de la pantalla */
-  margin-right: 70vw; /* Margen izquierdo relativo al ancho de la pantalla */
+    /* Margen superior relativo a la altura de la pantalla */
+  margin-left: 24.4vw;
+  opacity: 0.5;
+  margin-bottom: 6.6vh; /* Margen izquierdo relativo al ancho de la pantalla */
   position: relative;
 }
 .bola{
   height: 11vh;  /* Altura relativa al 10% de la altura de la pantalla */
   width: 6vw;   /* Ancho relativo al 15% del ancho de la pantalla */
    /* Margen superior relativo a la altura de la pantalla */
-
-  background-color: red;
   border-radius: 50%;
+}
+.pantalla{
+  background-color: yellow;
+  width: 58.9vw;
+  height: 80vw;
+  margin-left: 20.75vw;
+  margin-top: 5vh;
+  margin-bottom: 8vh;
 }
 
 @media (max-width: 768px) {  /* Para pantallas más pequeñas como móviles */
