@@ -1,72 +1,90 @@
-
-
-import React, { useState, useRef,useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 const Stick = () => {
   const [position, setPosition] = useState({ x: 50, y: 50 });
   const containerRef = useRef(null);
-  const keyPressed = useRef(null);
-  const moveToMax = (direction) => {
-    const container = containerRef.current;
-    const rect = container.getBoundingClientRect();
-    switch (direction) {
-      case 'W':
-        setPosition({ x: position.x, y: 0 }); // Mover arriba
-        break;
-      case 'A':
-        setPosition({ x: 0, y: position.y }); // Mover a la izquierda
-        break;
-      case 'S':
-        setPosition({ x: position.x, y: 100 }); // Mover abajo
-        break;
-      case 'D':
-        setPosition({ x: 100, y: position.y }); // Mover a la derecha
-        break;
-      default:
-        break;
-    }
-  };
+  const keyPressed = useRef({}); // Inicializamos como objeto vacío
 
-  // Resetear a la posición original (50%, 50%)
+  // Función para mover el "stick" a las esquinas o bordes
+  const moveToMax = useCallback((direction) => {
+    setPosition((prevPosition) => {
+      switch (direction) {
+        case 'W':
+          return { ...prevPosition, y: 0 }; // Mover hacia arriba
+        case 'A':
+          return { ...prevPosition, x: 0 }; // Mover hacia la izquierda
+        case 'S':
+          return { ...prevPosition, y: 100 }; // Mover hacia abajo
+        case 'D':
+          return { ...prevPosition, x: 100 }; // Mover hacia la derecha
+        case 'WA':
+          return { x: 0, y: 0 }; // Diagonal arriba izquierda
+        case 'WD':
+          return { x: 100, y: 0 }; // Diagonal arriba derecha
+        case 'SA':
+          return { x: 0, y: 100 }; // Diagonal abajo izquierda
+        case 'SD':
+          return { x: 100, y: 100 }; // Diagonal abajo derecha
+        default:
+          return prevPosition;
+      }
+    });
+  }, []);
+
+  // Resetear posición al centro
   const resetPosition = () => {
     setPosition({ x: 50, y: 50 });
   };
 
-  // Detectar la tecla presionada (WASD)
+  // Detectar teclas presionadas (WASD) y sus combinaciones diagonales
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (!keyPressed.current) {
-        keyPressed.current = e.key;
-        if (e.key === 'w' || e.key === 'W') {
+      keyPressed.current[e.key.toLowerCase()] = true;
+
+      // Verificar combinaciones de teclas
+      if (keyPressed.current['w'] && keyPressed.current['a']) {
+        moveToMax('WA'); // Mover diagonal arriba izquierda
+      } else if (keyPressed.current['w'] && keyPressed.current['d']) {
+        moveToMax('WD'); // Mover diagonal arriba derecha
+      } else if (keyPressed.current['s'] && keyPressed.current['a']) {
+        moveToMax('SA'); // Mover diagonal abajo izquierda
+      } else if (keyPressed.current['s'] && keyPressed.current['d']) {
+        moveToMax('SD'); // Mover diagonal abajo derecha
+      } else {
+        // Comprobar si se presionó una tecla individual
+        if (keyPressed.current['w']) {
           moveToMax('W');
-        } else if (e.key === 'a' || e.key === 'A') {
+        } else if (keyPressed.current['a']) {
           moveToMax('A');
-        } else if (e.key === 's' || e.key === 'S') {
+        } else if (keyPressed.current['s']) {
           moveToMax('S');
-        } else if (e.key === 'd' || e.key === 'D') {
+        } else if (keyPressed.current['d']) {
           moveToMax('D');
         }
       }
     };
 
     const handleKeyUp = (e) => {
-      if (keyPressed.current === e.key) {
-        keyPressed.current = null;
+      delete keyPressed.current[e.key.toLowerCase()];
+
+      // Resetear cuando no haya teclas presionadas
+      if (Object.keys(keyPressed.current).length === 0) {
         resetPosition();
       }
     };
 
-    // Agregar event listeners para las teclas WASD
+    // Agregar listeners para las teclas presionadas y liberadas
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
 
-    // Limpiar los event listeners cuando el componente se desmonte
     return () => {
+      // Limpiar los listeners cuando el componente se desmonte
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [position]);
+  }, [moveToMax]);
 
+  // Lógica para el movimiento del mouse y arrastre
   const handleMouseMove = (e) => {
     const container = containerRef.current;
     const rect = container.getBoundingClientRect();
@@ -79,11 +97,14 @@ const Stick = () => {
     });
   };
 
+  // Lógica para iniciar el arrastre con el mouse
   const handleMouseDown = (e) => {
     e.preventDefault();
     const moveListener = (e) => handleMouseMove(e);
     const upListener = () => {
-    setPosition({ x: 50, y: 50 });
+      // Restablecer posición al centro cuando se deja de arrastrar
+      resetPosition();
+
       document.removeEventListener('mousemove', moveListener);
       document.removeEventListener('mouseup', upListener);
     };
@@ -94,28 +115,24 @@ const Stick = () => {
 
   return (
     <div
-        className='stick'
+      className="stick"
       ref={containerRef}
       style={{
         position: 'relative',
-        width: '6vw',
-        height: '11vh',
-        border: '2px solid #ccc',
       }}
       onMouseDown={handleMouseDown}
     >
-      <div className='bola'
+      <div
+        className="bola"
         style={{
           position: 'absolute',
           left: `${position.x}%`,
           top: `${position.y}%`,
           transform: 'translate(-50%, -50%)',
-          width: '6vw',
-          height: '11vh',
           borderRadius: '50%',
+          backgroundColor: 'blue', // Color de la bola
           cursor: 'pointer',
         }}
-        
       />
     </div>
   );
