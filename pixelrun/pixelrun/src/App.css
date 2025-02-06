@@ -47,6 +47,22 @@ root{
   margin-left: 20.75vw;
   margin-top: 5vh;
   margin-bottom: 10.2vh;
+  display: flex;
+}
+.visualizacion{
+  background-color: red;
+  width: 35%;
+  height: 100%;
+}
+.resumen{
+  background-color: yellow;
+  width: 35%;
+  height: 100%;
+}
+.lista{
+  background-color: aqua;
+  width: 30%;
+  height: 100%;
 }
 
 @media (max-width: 768px) {  /* Para pantallas más pequeñas como móviles */
