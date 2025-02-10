@@ -1,4 +1,5 @@
 import React from 'react';
+import Lista from './lista.js'
 
 function Screen(pagina){
     return(
@@ -22,9 +23,7 @@ function Screen(pagina){
                 <li>SPD</li>
             </ul>
             </div>
-            <div className='lista'>
-
-            </div>
+            <Lista/>
         
     </div>
     );
