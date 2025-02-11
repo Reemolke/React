@@ -10,6 +10,82 @@ root{
   justify-content: center;
   align-items: center;
 }
+@font-face {
+  font-family: 'pokefont';
+  src: url('./assets/pokefont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body,html {
+  font-family: 'pokefont';
+  overflow: hidden;
+}
+h1,h3{
+  font-size: 20px;
+  background-color: white;
+  padding:10px;
+  border:8px solid rgb(73, 75, 75);
+  padding: 10px;
+  
+}
+p{
+  background-color: white;
+  padding:10px;
+  border:8px solid rgb(73, 75, 75);
+  font-size: small;
+}
+.buscador{
+  background-color: rgb(234, 231, 236);
+  padding:10px;
+  border:8px solid rgb(73, 75, 75);
+  font-size: small;
+}
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat-name {
+  width: 80px;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.stat-bar-container {
+  width: 100%;
+  max-width: 200px;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 25px;
+}
+
+.stat-bar {
+  height: 100%;
+  background-color: #4caf50;
+  text-align: right;
+  padding-right: 5px;
+  border-radius: 10px 0 0 10px;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 12px;
+  font-weight: bold;
+}
 .index{
   height: 100vh;
   width: 100%;
@@ -45,13 +121,14 @@ root{
   width: 58.9vw;
   height: 80vh;
   max-height: 67vh;
-  margin-left: 20.75vw;
-  margin-top: 5vh;
+  margin-left: 19.9vw;
+  margin-top: 3.6vh;
   margin-bottom: 10.2vh;
   display: flex;
+  border: 10px solid rgb(37, 17, 110);
 }
 .visualizacion{
-  background-color: beige;
+  background-color: rgb(234, 231, 236);
   color: black;
   width: 35%;
   height: 100%;
@@ -59,42 +136,68 @@ root{
   flex-direction: column;
   text-align: center;
   align-items: center;
+  border-left: 10px solid #39394A;
+  background-image: url('bgpokemon.png');
+  background-repeat:no-repeat ;
+  background-size: cover;
+
 }
 .visualizacion img{
   width: 100%;
   height: 100%;
+  max-height: 300px;
   justify-self: center;
 }
 .visualizacion div{
   width: 80%;
   height: 60%;
   justify-self: center;
-  background-image: url('https://th.bing.com/th/id/OIP.iG7G9JdHt3lGTI3j23hQjwHaDn?rs=1&pid=ImgDetMain');
-  background-repeat:no-repeat ;
-  background-size: cover;
-}
-.resumen{
-  background-color: yellow;
-  width: 30%;
-  height: 100%;
   
 }
+.resumen{
+  background-color: rgb(234, 231, 236);
+  width: 30%;
+  height: 100%;
+  border-left: 10px solid #39394A;
+  text-align: center;
+}
+.resumen p{
+  border-left: 0px;
+  border-right: 0px;
+}
+.resumen p:hover{
+  background-color: #282c34;
+  color:white;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .lista{
-  background-color: aqua;
+  background-color: rgb(73, 75, 75);
   width: 35%;
   height: 100%;
   overflow-y: auto;
   text-align: center;
   align-content: center;
+  border-left: 8px solid #39394A;
 }
 .lista li{
-  height: 100%;
-  background-color: rebeccapurple;
+  height: 5vh;
+  background-color: rgb(234, 231, 236);
   list-style: none;
   margin-right: 2.5vw;
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
+  border-top: 4px solid #9C9C9C;
+  border-left: 8px solid #9C9C9C;
+  border-right: 8px solid #9C9C9C;
+  border-bottom: 4px solid #9C9C9C;
+}
+.lista li:hover{
+  background-color: aliceblue;
 }
 
 @media (max-width: 768px) {  /* Para pantallas más pequeñas como móviles */
