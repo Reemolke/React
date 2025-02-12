@@ -20,7 +20,6 @@ function Screen(pagina){
               .catch((error) => {
                 console.error(error.message);
               });
-            
 
     }
     

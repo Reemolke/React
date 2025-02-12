@@ -4,7 +4,6 @@ import axios from 'axios';
 function Lista({ onClick }) {
   const [pokemones, setPokemones] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-
   useEffect(() => {
     axios
       .get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
@@ -15,7 +14,6 @@ function Lista({ onClick }) {
         console.error(error.message);
       });
   }, []);
-
   // Filtra los pokemones según el término de búsqueda
   const filteredPokemons = pokemones.filter(pokemon =>
     pokemon.name.toLowerCase().startsWith(searchTerm.toLowerCase())
