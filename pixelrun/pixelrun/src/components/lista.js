@@ -4,42 +4,67 @@ import axios from 'axios';
 function Lista({ onClick }) {
   const [pokemones, setPokemones] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+
   useEffect(() => {
     axios
       .get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
       .then((response) => {
-        setPokemones(response.data.results); // Actualizar el estado con la lista de Pokémon
+        setPokemones(response.data.results);
       })
       .catch((error) => {
         console.error(error.message);
       });
   }, []);
-  // Filtra los pokemones según el término de búsqueda
-  const filteredPokemons = pokemones.filter(pokemon =>
-    pokemon.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-  );
+
+  useEffect(() => {
+    // Buscar si el término ingresado coincide con un Pokémon por nombre o ID
+    const foundPokemon = pokemones.find((pokemon) => {
+      const pokemonId = pokemon.url.split('/')[6]; // Extraer la ID desde la URL
+      return pokemon.name.toLowerCase() === searchTerm.toLowerCase() || pokemonId === searchTerm;
+    });
+
+    setSelectedPokemon(foundPokemon ? foundPokemon.url.split('/')[6] : null);
+  }, [searchTerm, pokemones]);
+
+  // Filtrar la lista de Pokémon para la visualización
+  const filteredPokemons = pokemones.filter((pokemon) => {
+    const pokemonId = pokemon.url.split('/')[6];
+    return (
+      pokemon.name.toLowerCase().startsWith(searchTerm.toLowerCase()) || 
+      pokemonId.startsWith(searchTerm)
+    );
+  });
 
   return (
     <div className="lista">
       {/* Campo de búsqueda */}
       <input
-        className='buscador'
+        className="buscador"
         type="text"
-        placeholder="Buscar Pokémon..."
+        placeholder="Buscar Pokémon por nombre o ID..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el término de búsqueda
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
+      <button 
+        onClick={() => selectedPokemon && onClick(selectedPokemon)} 
+        disabled={!selectedPokemon}
+      >
+        Buscar
+      </button>
 
       <ul>
-        {/* Muestra los Pokémon filtrados */}
-        {filteredPokemons.map((pokemon, index) => (
-          <li
-            key={index}
-            onClick={() => onClick(pokemon.url.substring(34, pokemon.url.length - 1))}
-          >
-            {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
-          </li>
-        ))}
+        {filteredPokemons.map((pokemon) => {
+          const pokemonId = pokemon.url.split('/')[6];
+          return (
+            <li
+              key={pokemonId}
+              onClick={() => onClick(pokemonId)}
+            >
+              {pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

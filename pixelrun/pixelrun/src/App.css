@@ -37,20 +37,36 @@ p{
 }
 .buscador{
   background-color: rgb(234, 231, 236);
-  padding:10px;
   border:8px solid #9C9C9C;
   font-size: small;
   position: sticky;
-  top: 0;/* Asegura que no sea transparente */
+  top: 0;
   padding: 10px;
   z-index: 10;
+  font-family: 'pokefont';
+  max-width: 100px;
 }
 .stats-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
+button{
+  background-color: rgb(234, 231, 236);
+  padding:10px;
+  border:8px solid #9C9C9C;
+  font-size: small;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  z-index: 10;
+  font-family: 'pokefont';
+  max-width: 200px;
+}
+button:hover{
+  background-color: black;
+  color:white;
+}
 .stat-item {
   display: flex;
   align-items: center;
@@ -105,18 +121,18 @@ p{
   height: 25%;
 }
 .stick{
-  height: 11vh;  /* Altura relativa al 10% de la altura de la pantalla */
-  width: 6vw;   /* Ancho relativo al 15% del ancho de la pantalla */
-    /* Margen superior relativo a la altura de la pantalla */
+  height: 11vh;  
+  width: 6vw;   
+
   margin-left: 24.4vw;
   opacity: 0.5;
-  margin-bottom: 6.6vh; /* Margen izquierdo relativo al ancho de la pantalla */
+  margin-bottom: 6.6vh; 
   position: relative;
 }
 .bola{
-  height: 11vh;  /* Altura relativa al 10% de la altura de la pantalla */
-  width: 6vw;   /* Ancho relativo al 15% del ancho de la pantalla */
-   /* Margen superior relativo a la altura de la pantalla */
+  height: 11vh;  
+  width: 6vw;   
+
   border-radius: 50%;
 }
 .pantalla{

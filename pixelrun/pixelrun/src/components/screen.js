@@ -3,7 +3,7 @@ import Lista from './lista.js'
 import axios from 'axios'
 import PokemonStatsBars from './pokemonstatsbars.js';
 
-function Screen(pagina){
+function Screen(){
 
     const [pokemon,setPokemon] = useState([]);
 
@@ -13,8 +13,8 @@ function Screen(pagina){
               .then((response) => {
                 console.log(response.data);
                 
-                // Assuming the list of pokemons is in the 'results' field
-                setPokemon(response.data); // Update state with the Pokémon list
+                
+                setPokemon(response.data); 
                 
               })
               .catch((error) => {
@@ -46,11 +46,14 @@ function Screen(pagina){
             </div>
             <div className='resumen'>
             <PokemonStatsBars stats={pokemon?.stats || []}/>
-            {pokemon?.abilities
-                ? pokemon.abilities.map((a, index) => (
-                    <a href={a.ability.url}><p>{a.ability.name[0].toUpperCase() + a.ability.name.slice(1)}</p></a>
-                ))
-                : "Unknown"}
+            {pokemon?.abilities && pokemon.abilities.length > 0
+            ? pokemon.abilities.map((a, index) => (
+                <a key={index} href={a.ability.url}>
+                  <p>{a.ability.name[0].toUpperCase() + a.ability.name.slice(1)}</p>
+                </a>
+              ))
+          : <p>Unknown</p>}
+
 
             </div>
             <Lista onClick={handlePokemon}/>
