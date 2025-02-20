@@ -35,16 +35,24 @@ p{
   border:8px solid rgb(73, 75, 75);
   font-size: small;
 }
+.divSearch{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 .buscador{
   background-color: rgb(234, 231, 236);
   border:8px solid #9C9C9C;
   font-size: small;
   position: sticky;
   top: 0;
-  padding: 10px;
+  padding: 10.8px;
   z-index: 10;
   font-family: 'pokefont';
   max-width: 100px;
+}
+.botonBusqueda{
+  padding:8.5px;
 }
 .stats-container {
   display: flex;
@@ -179,6 +187,12 @@ button:hover{
     font-size: 8px;
     padding: 5px;
   }
+  .botonBusqueda{
+    padding:8.4px;
+
+    width: 60px;
+    position: sticky
+  }
   .visualizacion img{
     width: 100%;
     height: 100%;
@@ -293,6 +307,9 @@ a{
   }
   .bola{
     background-color: red;
+  }
+  .botonBusqueda{
+    background-color: rebeccapurple;
   }
 }
 .App-logo {

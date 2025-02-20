@@ -39,19 +39,19 @@ function Lista({ onClick }) {
   return (
     <div className="lista">
       {/* Campo de búsqueda */}
-      <input
+      <div className='divSearch'><input
         className="buscador"
         type="text"
         placeholder="Buscar Pokémon por nombre o ID..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button 
+      <button className="botonBusqueda"
         onClick={() => selectedPokemon && onClick(selectedPokemon)} 
         disabled={!selectedPokemon}
-      >
-        Buscar
-      </button>
+      >{'🔎︎'}
+      </button></div>
+      
 
       <ul>
         {filteredPokemons.map((pokemon) => {
