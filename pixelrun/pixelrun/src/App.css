@@ -126,7 +126,18 @@ button:hover{
   background-position: center;
 }
 .botones{
-  height: 25%;
+  height: 300px;
+  width: 400px;
+
+  margin-left: 58%;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.botones div{
+  height: 100%;
+  width: 35%;
+  background-color: yellow;
 }
 .stick{
   height: 11vh;  
@@ -144,7 +155,7 @@ button:hover{
   border-radius: 50%;
 }
 .pantalla{
-  background-color: yellow;
+  background-color: gray;
   width: 58.9vw;
   height: 80vh;
   max-height: 67vh;
@@ -279,6 +290,43 @@ a{
   text-align: center;
   align-content: center;
   border-left: 8px solid #39394A;
+}
+
+
+.combatePokemon{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  border: 12px solid #9C9C9C;
+}
+
+
+#versus{
+  height: 5%;
+  width: 5%;
+  margin-top: 25%;
+  text-align: center;
+}
+.contenedorCombate .pantalla{
+  flex-direction: row;
+  justify-content: space-between;
+}
+.pantalla .combatePokemon div{
+  height: 60%;
+  width: 100%;
+  
+}
+.combatePokemon div img{
+  height: 150px;
+  width: 200px;
+  margin-left: 20%;
+  margin-bottom: 10%;
+  margin-top: 20%;
+}
+.combatePokemon div button{
+  margin-left: 25%;
 }
 .lista li{
   height: 5vh;

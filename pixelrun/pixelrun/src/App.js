@@ -5,6 +5,7 @@ function App() {
     
     <div class="index">
       <Screen/>
+      
     </div>
   );
 }
